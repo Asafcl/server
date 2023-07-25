@@ -3,8 +3,15 @@ const app = express();
 const cors = require("cors");
 const pool = require("./db");
 
-//middleware
-app.use(cors());
+// Set up CORS to allow requests from your Netlify domain
+const allowedOrigins = [
+  "https://clientofserver.netlify.app", // Add your Netlify app domain here
+  // Add any other allowed origins as needed
+];
+app.use(cors({
+  origin: allowedOrigins,
+}));
+
 app.use(express.json()); //req.body
 
 //ROUTES//
